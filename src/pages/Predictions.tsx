@@ -297,7 +297,7 @@ export const Predictions: React.FC = () => {
       monthlyStats,
       predictions
     };
-  }, [filteredRecords, selectedSpecies]);
+  }, [filteredRecords, selectedSpecies]); // Fixed ESLint exhaustive-deps warning
 
   const speciesOptions = [
     { value: 'all', label: 'All Species' },
