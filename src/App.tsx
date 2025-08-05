@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './hooks/useTheme';
+import { GlobalStyles } from './styles/GlobalStyles';
+import { Layout } from './components/layout/Layout';
+
+// Pages
+import { Home } from './pages/Home';
+import { DataEntry } from './pages/DataEntry';
+import { History } from './pages/History';
+import { Map } from './pages/Map';
+import { Predictions } from './pages/Predictions';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <GlobalStyles />
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/entry" element={<DataEntry />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/map" element={<Map />} />
+            <Route path="/predictions" element={<Predictions />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </ThemeProvider>
   );
 }
 
