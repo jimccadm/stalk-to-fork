@@ -174,7 +174,6 @@ export const Predictions: React.FC = () => {
       timeStats[record.timeOfDay] = (timeStats[record.timeOfDay] || 0) + 1;
       
       // Monthly statistics
-      const month = getMonth(parseISO(record.date));
       const monthName = format(parseISO(record.date), 'MMMM');
       monthlyStats[monthName] = (monthlyStats[monthName] || 0) + 1;
     });
@@ -298,7 +297,7 @@ export const Predictions: React.FC = () => {
       monthlyStats,
       predictions
     };
-  }, [filteredRecords]);
+  }, [filteredRecords, selectedSpecies]);
 
   const speciesOptions = [
     { value: 'all', label: 'All Species' },
